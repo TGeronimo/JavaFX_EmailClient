@@ -16,6 +16,26 @@ public class ViewFactory {
 
     private EmailManager emailManager;
 
+//    view options handling
+    private FontSize fontSize = FontSize.MEDIUM;
+    private ColorTheme colorTheme = ColorTheme.DEFAULT;
+
+    public FontSize getFontSize() {
+        return fontSize;
+    }
+
+    public void setFontSize(FontSize fontSize) {
+        this.fontSize = fontSize;
+    }
+
+    public ColorTheme getColorTheme() {
+        return colorTheme;
+    }
+
+    public void setColorTheme(ColorTheme colorTheme) {
+        this.colorTheme = colorTheme;
+    }
+
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
     }
