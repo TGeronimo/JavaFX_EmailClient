@@ -21,7 +21,7 @@ public class ViewFactory {
 
 //    view options handling
     private FontSize fontSize = FontSize.MEDIUM;
-    private ColorTheme colorTheme = ColorTheme.DEFAULT;
+    private ColorTheme colorTheme = ColorTheme.DARK;
 
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
