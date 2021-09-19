@@ -6,4 +6,6 @@ module FirstJavaFX {
 
     opens com.baronasu;
     opens com.baronasu.view;
+    opens com.baronasu.controller;
+//    opens com.baronasu.model;
 }

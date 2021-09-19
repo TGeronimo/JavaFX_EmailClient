@@ -1,4 +1,4 @@
-package com.baronasu.view;
+package com.baronasu.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
