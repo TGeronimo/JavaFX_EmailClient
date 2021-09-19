@@ -21,7 +21,7 @@ public class ViewFactory {
 
 //    view options handling
     private FontSize fontSize = FontSize.MEDIUM;
-    private ColorTheme colorTheme = ColorTheme.DARK;
+    private ColorTheme colorTheme = ColorTheme.DEFAULT;
 
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
@@ -105,8 +105,7 @@ public class ViewFactory {
     }
 
     public void updateStyles() {
-        for (Stage stage :
-                activeStages) {
+        for (Stage stage : activeStages) {
             Scene scene = stage.getScene();
 
             // handle CSS
