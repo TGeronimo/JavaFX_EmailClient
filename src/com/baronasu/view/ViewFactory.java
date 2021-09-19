@@ -5,20 +5,28 @@ import com.baronasu.controller.BaseController;
 import com.baronasu.controller.LoginWindowController;
 import com.baronasu.controller.MainWindowController;
 import com.baronasu.controller.OptionsWindowController;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ViewFactory {
 
     private EmailManager emailManager;
+    private ArrayList<Stage> activeStages;
 
 //    view options handling
     private FontSize fontSize = FontSize.MEDIUM;
     private ColorTheme colorTheme = ColorTheme.DEFAULT;
+
+    public ViewFactory(EmailManager emailManager) {
+        this.emailManager = emailManager;
+        activeStages = new ArrayList<>();
+    }
 
     public FontSize getFontSize() {
         return fontSize;
@@ -34,10 +42,6 @@ public class ViewFactory {
 
     public void setColorTheme(ColorTheme colorTheme) {
         this.colorTheme = colorTheme;
-    }
-
-    public ViewFactory(EmailManager emailManager) {
-        this.emailManager = emailManager;
     }
 
     public void showLoginWindow() {
@@ -92,9 +96,23 @@ public class ViewFactory {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
+        activeStages.add(stage);
     }
 
     public void closeStage(Stage stageToClose) {
         stageToClose.close();
+        activeStages.remove(stageToClose);
+    }
+
+    public void updateStyles() {
+        for (Stage stage :
+                activeStages) {
+            Scene scene = stage.getScene();
+
+            // handle CSS
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(getClass().getResource(ColorTheme.getCssPath(colorTheme)).toExternalForm());
+            scene.getStylesheets().add(getClass().getResource(FontSize.getCssPath(fontSize)).toExternalForm());
+        }
     }
 }

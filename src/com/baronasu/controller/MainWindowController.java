@@ -2,6 +2,7 @@ package com.baronasu.controller;
 
 import com.baronasu.EmailManager;
 import com.baronasu.view.ViewFactory;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
@@ -25,6 +26,12 @@ public class MainWindowController extends BaseController {
     @FXML
     void optionsActions() {
         viewFactory.showOptionsWindow();
+    }
+
+    @FXML
+    void addAccountAction() {
+        viewFactory.showLoginWindow();
+
     }
 
 }
