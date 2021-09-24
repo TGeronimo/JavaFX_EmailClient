@@ -3,9 +3,9 @@ module FirstJavaFX {
     requires javafx.controls;
     requires javafx.graphics;
     requires javafx.web;
+    requires activation;
+    requires java.mail;
 
-    opens com.baronasu;
-    opens com.baronasu.view;
     opens com.baronasu.controller;
 //    opens com.baronasu.model;
 }
