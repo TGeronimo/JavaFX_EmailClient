@@ -7,5 +7,6 @@ module FirstJavaFX {
     requires java.mail;
 
     opens com.baronasu.controller;
-//    opens com.baronasu.model;
+    opens com.baronasu.model;
+    opens com.baronasu;
 }
