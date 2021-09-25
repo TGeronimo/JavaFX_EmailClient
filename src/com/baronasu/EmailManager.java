@@ -1,24 +1,23 @@
 package com.baronasu;
 
+import com.baronasu.controller.services.FetchFolderService;
 import com.baronasu.model.EmailAccount;
+import com.baronasu.model.EmailTreeItem;
 import javafx.scene.control.TreeItem;
 
 public class EmailManager {
 
 //    Folder handling:
-    private TreeItem<String> foldersRoot = new TreeItem<>("");
+    private EmailTreeItem<String> foldersRoot = new EmailTreeItem<>("");
 
-    public TreeItem<String> getFoldersRoot() {
+    public EmailTreeItem<String> getFoldersRoot() {
         return foldersRoot;
     }
 
     public void addEmailAccount(EmailAccount emailAccount) {
-        TreeItem<String> treeItem = new TreeItem<>(emailAccount.getAddress());
-        treeItem.setExpanded(true);
-        treeItem.getChildren().add(new TreeItem<String>("INBOX"));
-        treeItem.getChildren().add(new TreeItem<String>("SENT"));
-        treeItem.getChildren().add(new TreeItem<String>("SPAM"));
-        treeItem.getChildren().add(new TreeItem<String>("TRASH"));
+        EmailTreeItem<String> treeItem = new EmailTreeItem<>(emailAccount.getAddress());
+        FetchFolderService fetchFolderService = new FetchFolderService(emailAccount.getStore(), treeItem);
+        fetchFolderService.start();
         foldersRoot.getChildren().add(treeItem);
     }
 }
