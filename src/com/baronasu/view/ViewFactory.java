@@ -18,6 +18,7 @@ public class ViewFactory {
 
     private EmailManager emailManager;
     private ArrayList<Stage> activeStages;
+    private boolean mainViewInitialized = false;
 
 //    view options handling
     private FontSize fontSize = FontSize.MEDIUM;
@@ -26,6 +27,10 @@ public class ViewFactory {
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
         activeStages = new ArrayList<>();
+    }
+
+    public boolean isMainViewInitialized() {
+        return mainViewInitialized;
     }
 
     public FontSize getFontSize() {
@@ -66,6 +71,7 @@ public class ViewFactory {
         );
 
         initializeStage(controller);
+        mainViewInitialized = true;
     }
 
     public void showOptionsWindow() {
