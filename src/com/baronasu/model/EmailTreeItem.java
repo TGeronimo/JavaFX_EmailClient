@@ -8,6 +8,7 @@ import javax.mail.Flags;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.Arrays;
 
 public class EmailTreeItem<String> extends TreeItem<String> {
 
@@ -30,7 +31,7 @@ public class EmailTreeItem<String> extends TreeItem<String> {
         EmailMessage emailMessage = new EmailMessage(
                 message.getSubject(),
                 message.getFrom()[0].toString(),
-                message.getRecipients(MimeMessage.RecipientType.TO).toString(),
+                Arrays.toString(message.getRecipients(MimeMessage.RecipientType.TO)),
                 message.getSize(),
                 message.getSentDate(),
                 messageIsRead,
