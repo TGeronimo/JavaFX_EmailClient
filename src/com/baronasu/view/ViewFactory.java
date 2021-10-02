@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * author: h4ck1r0n
+ */
 public class ViewFactory {
 
     private EmailManager emailManager;
